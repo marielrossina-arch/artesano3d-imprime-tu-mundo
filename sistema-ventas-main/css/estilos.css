@@ -1,0 +1,93 @@
+:root{--fondo:#F1F5E9;--tarjeta:#FFFFFF;--texto:#22302A;--suave:#5C6B60;--acento:#4F7F5A;--acento-oscuro:#2F4A3A;--hoja:#B9CE9C;--error:#A23B2A;--borde:#D5DEC6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:"Zen Maru Gothic",system-ui,sans-serif;color:var(--texto);background:var(--fondo);line-height:1.6}
+h1,h2,h3{font-family:"Shippori Mincho",Georgia,serif;color:var(--acento-oscuro);line-height:1.15;margin:0}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+
+/* Cabecera */
+.cabecera{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:12px 20px;background:var(--fondo);border-bottom:1px solid var(--borde)}
+.logo{margin-right:auto;font-family:"Shippori Mincho",serif;font-weight:800;font-size:1.25rem;color:var(--acento-oscuro);text-decoration:none}
+.nav{display:flex;gap:18px}
+.nav a{color:var(--suave);font-weight:500;text-decoration:none}
+.nav a:hover{color:var(--acento)}
+
+/* Botones y formularios */
+button,.boton{font:inherit;font-weight:700;cursor:pointer;display:inline-block;padding:.65rem 1.3rem;color:#fff;background:var(--acento);border:1.5px solid var(--acento);border-radius:999px;text-decoration:none}
+button:hover,.boton:hover{background:var(--acento-oscuro);border-color:var(--acento-oscuro)}
+button:disabled{opacity:.6;cursor:wait}
+button.secundario{color:var(--texto);background:transparent;border-color:var(--borde);font-weight:500}
+button.secundario:hover{background:rgba(0,0,0,.05)}
+label{display:block;margin-bottom:.3rem;font-size:.9rem;color:var(--suave)}
+input,select{width:100%;padding:.65rem .8rem;font:inherit;color:var(--texto);background:#fff;border:1.5px solid var(--borde);border-radius:10px}
+.fila{display:flex;flex-wrap:wrap;gap:.9rem;align-items:flex-end}
+.campo{flex:1 1 140px}
+#mensaje-login,#mensaje-venta{min-height:1.4rem;margin:.8rem 0 0;font-size:.9rem;color:var(--suave)}
+#mensaje-login{color:var(--error)}
+
+/* Sitio público */
+#sitio,.seccion{max-width:1040px;margin-inline:auto}
+#sitio{padding:0 20px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:56px 0 32px}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:800}
+.hero p{max-width:46ch;margin:16px 0 24px;color:var(--suave);font-size:1.05rem}
+.jarron{width:100%;max-width:300px;margin:0 auto;display:block}
+.jarron rect{transform-origin:center;animation:crece .7s ease-out backwards}
+@keyframes crece{from{transform:scaleX(0);opacity:0}}
+@media (prefers-reduced-motion:reduce){.jarron rect{animation:none}html{scroll-behavior:auto}}
+.seccion{padding:40px 0}
+.seccion h2{font-size:1.9rem;margin-bottom:20px}
+.texto{max-width:62ch;color:var(--suave);font-size:1.05rem;margin:0}
+.enlaces-contacto{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
+.pie{text-align:center;color:var(--suave);font-size:.88rem;padding:28px 0 40px}
+.whatsapp-flotante{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:100;padding:.8rem 1.2rem;color:#fff;background:#25d366;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.whatsapp-flotante:hover{background:#1ebe5b}
+
+/* Catálogo */
+#catalogo{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+#catalogo .tarjeta{display:flex;flex-direction:column;overflow:hidden;background:var(--tarjeta);border:1px solid var(--borde);border-radius:18px}
+.tarjeta .imagen{display:grid;place-items:center;aspect-ratio:4/3;background:var(--hoja)}
+.tarjeta .imagen svg{height:78%;width:auto}
+.tarjeta-info{display:flex;flex-direction:column;gap:8px;flex:1;padding:16px}
+.tarjeta-info h3{font-size:1.15rem}
+.tarjeta-info p{flex:1;margin:0;color:var(--suave);font-size:.92rem}
+
+/* Login */
+#seccion-login{max-width:400px;margin:2rem auto;padding:2rem;background:var(--tarjeta);border:1px solid var(--borde);border-radius:18px}
+#seccion-login input{margin-bottom:1rem}
+#seccion-login form button{width:100%}
+#seccion-login .ayuda{margin:.25rem 0 1.5rem;color:var(--suave)}
+#btn-volver{margin-top:1rem}
+
+/* Panel de ventas */
+#seccion-app{max-width:960px;margin:1.5rem auto;padding:0 20px}
+.barra-superior{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.barra-superior h2{font-size:1.8rem}
+.bloque{margin-bottom:1.25rem;padding:1.5rem;background:var(--tarjeta);border:1px solid var(--borde);border-radius:18px}
+.bloque h3{margin-bottom:1rem;font-size:1.4rem}
+.menu-pestanas{display:flex;gap:.25rem;margin-bottom:1.25rem;border-bottom:1px solid var(--borde);overflow-x:auto}
+.pestana{padding:.7rem 1.2rem;color:var(--suave);background:transparent;border:none;border-bottom:3px solid transparent;border-radius:0;font-weight:400;white-space:nowrap;margin-bottom:-1px}
+.pestana:hover{color:var(--acento);background:transparent}
+.pestana.activa{color:var(--acento);border-bottom-color:var(--acento);font-weight:700}
+.tabla-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{padding:.75rem .6rem;text-align:left;border-bottom:1px solid var(--borde)}
+th{font-size:.85rem;font-weight:500;color:var(--suave)}
+td button{padding:.35rem .8rem;font-size:.9rem;color:var(--texto);background:transparent;border-color:var(--borde);font-weight:500}
+td button:hover{background:rgba(0,0,0,.05)}
+#panel-edicion{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--borde)}
+
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;padding-top:32px}
+  .jarron{max-width:200px;order:-1}
+  .nav{order:3;width:100%;justify-content:space-between}
+}
+
+/* Resumen mensual y fotos de ventas */
+.total-mes{margin:1rem 0 0;font-family:"Shippori Mincho",serif;font-size:2.4rem;font-weight:800;color:var(--acento-oscuro)}
+.suave{margin:0 0 1rem;color:var(--suave)}
+.miniatura{display:block;width:48px;height:48px;object-fit:cover;border-radius:8px;border:1px solid var(--borde)}
+
+.tarjeta .imagen{overflow:hidden}
+.tarjeta .imagen img{width:100%;height:100%;object-fit:cover;display:block}

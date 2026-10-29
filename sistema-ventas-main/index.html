@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>3D Imprime tu mundo - Artesano 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+<header class="cabecera">
+  <a class="logo" href="#inicio">3D Imprime tu mundo</a>
+  <nav class="nav" aria-label="Principal">
+    <a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a>
+  </nav>
+  <button id="btn-admin" class="secundario">Administrar</button>
+</header>
+
+<!-- ============ SITIO PÚBLICO ============ -->
+<main id="sitio">
+  <div class="hero" id="inicio">
+    <div>
+      <h1>Diseños únicos, impresos capa por capa</h1>
+      <p>Objetos 3D hechos a mano para tu casa, tu escritorio y tus regalos. También hacemos piezas a pedido.</p>
+      <a class="boton" href="#productos">Ver productos</a>
+    </div>
+    <svg id="jarron" class="jarron" viewBox="0 0 200 260" role="img" aria-label="Jarrón impreso en 3D, visto como capas apiladas"></svg>
+  </div>
+
+  <section id="productos" class="seccion">
+    <h2>Nuestros productos</h2>
+    <div id="catalogo"></div>
+  </section>
+
+  <section id="nosotros" class="seccion">
+    <h2>Sobre nosotros</h2>
+    <p class="texto">Soy artesano 3D. Diseño e imprimo cada pieza con filamentos de buena calidad y la termino a mano. Si tienes una idea, la convertimos en un objeto real.</p>
+  </section>
+
+  <section id="contacto" class="seccion">
+    <h2>Contacto</h2>
+    <p class="texto">Escríbenos para cotizar tu pieza o resolver cualquier duda.</p>
+    <div class="enlaces-contacto">
+      <!-- Cambia NUMERO por tu número con código de país, sin +, espacios ni guiones -->
+      <a class="boton" href="https://wa.me/NUMERO?text=Hola%2C%20quiero%20cotizar%20una%20pieza%203D" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <!-- Cambia USUARIO por tu cuenta, sin @ -->
+      <a class="boton" href="https://instagram.com/USUARIO" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+  </section>
+
+  <footer class="pie">© 2026 3D Imprime tu mundo</footer>
+
+  <a class="whatsapp-flotante" href="https://wa.me/NUMERO" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">WhatsApp</a>
+</main>
+
+<!-- ============ LOGIN ============ -->
+<section id="seccion-login" hidden>
+  <h2>Iniciar sesión</h2>
+  <p class="ayuda">Solo para el administrador.</p>
+  <form id="form-login">
+    <label for="login-email">Correo</label>
+    <input type="email" id="login-email" required autocomplete="email" />
+    <label for="login-password">Contraseña</label>
+    <input type="password" id="login-password" required autocomplete="current-password" />
+    <button type="submit">Entrar</button>
+  </form>
+  <p id="mensaje-login"></p>
+  <button id="btn-volver" class="secundario">Volver al sitio</button>
+</section>
+
+<!-- ============ PANEL DE VENTAS ============ -->
+<section id="seccion-app" hidden>
+  <div class="barra-superior">
+    <h2>Sistema de ventas</h2>
+    <div>
+      <button id="btn-ver-sitio" class="secundario">Ver sitio</button>
+      <button id="btn-cerrar-sesion" class="secundario">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <nav id="menu-pestanas" class="menu-pestanas" role="tablist">
+    <button class="pestana activa" role="tab" data-tab="ventas" aria-selected="true">Ventas</button>
+    <button class="pestana" role="tab" data-tab="categorias" aria-selected="false">Categorías</button>
+  </nav>
+
+  <div id="tab-ventas" class="panel-pestana" role="tabpanel">
+    <section class="bloque">
+      <h3>Registrar venta de Instagram</h3>
+      <form id="form-venta" class="fila">
+        <div class="campo"><label for="campo-categoria">Categoría</label><select id="campo-categoria" required></select></div>
+        <div class="campo"><label for="campo-precio">Monto vendido (Bs.)</label><input type="number" id="campo-precio" min="0.01" step="0.01" required /></div>
+        <div class="campo"><label for="campo-foto">Foto del producto (opcional)</label><input type="file" id="campo-foto" accept="image/*" /></div>
+        <button type="submit">Registrar venta</button>
+      </form>
+      <p id="mensaje-venta"></p>
+    </section>
+    <section class="bloque">
+      <h3>Total del mes</h3>
+      <div class="campo" style="max-width:220px"><label for="campo-mes">Mes</label><input type="month" id="campo-mes" /></div>
+      <div id="resumen-mes"></div>
+    </section>
+    <section class="bloque">
+      <h3>Ventas registradas</h3>
+      <div class="tabla-scroll"><table>
+        <thead><tr><th>Fecha</th><th>Categoría</th><th>Monto</th><th>Foto</th></tr></thead>
+        <tbody id="cuerpo-ventas"></tbody>
+      </table></div>
+    </section>
+  </div>
+
+  <div id="tab-categorias" class="panel-pestana" role="tabpanel" hidden>
+    <section class="bloque">
+      <h3>Nueva categoría</h3>
+      <form id="form-nueva-categoria" class="fila">
+        <div class="campo"><label for="nueva-nombre">Nombre</label><input type="text" id="nueva-nombre" required /></div>
+        <div class="campo"><label for="nueva-descripcion">Descripción</label><input type="text" id="nueva-descripcion" /></div>
+        <div class="campo"><label for="nueva-foto">Foto de referencia</label><input type="file" id="nueva-foto" accept="image/*" /></div>
+        <button type="submit">Crear categoría</button>
+      </form>
+      <p id="mensaje-categoria" class="suave"></p>
+    </section>
+    <section class="bloque">
+      <h3>Categorías</h3>
+      <div class="tabla-scroll"><table id="tabla-categorias">
+        <thead><tr><th>Foto</th><th>Categoría</th><th>Descripción</th><th>Total vendido</th><th>Acciones</th></tr></thead>
+        <tbody id="cuerpo-categorias"></tbody>
+      </table></div>
+      <div id="panel-edicion" style="display:none">
+        <h3>Editar categoría</h3>
+        <form id="form-editar-categoria" class="fila">
+          <input type="hidden" id="editar-id" />
+          <div class="campo"><label for="editar-nombre">Categoría</label><input type="text" id="editar-nombre" required /></div>
+          <div class="campo"><label for="editar-descripcion">Descripción</label><input type="text" id="editar-descripcion" /></div>
+          <div class="campo"><label for="editar-foto">Cambiar foto de referencia</label><input type="file" id="editar-foto" accept="image/*" /></div>
+          <button type="submit">Guardar cambios</button>
+        </form>
+      </div>
+    </section>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

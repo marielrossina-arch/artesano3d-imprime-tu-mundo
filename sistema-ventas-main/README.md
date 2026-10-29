@@ -1,0 +1,23 @@
+# sistema-ventas - Artesano 3D
+
+Sistema web para registrar categorías y ventas de piezas impresas en 3D,
+desarrollado como proyecto del curso Full Stack Básico.
+
+## Tecnologías
+- HTML5, CSS3, JavaScript (ES6+)
+- Supabase (PostgreSQL, Authentication)
+
+## Estructura del proyecto
+- docs/: documentación del proyecto (requerimientos, historias, etc.)
+- diagramas/: diagramas del curso
+- pages/: pantallas del sistema
+- css/: estilos
+- js/: lógica y conexión con Supabase
+
+## Configuración
+En `js/supabase-client.js` coloca la clave **anon / publishable** de tu proyecto
+de Supabase (Project Settings > API). Nunca uses la clave `service_role` en el
+navegador.
+
+## Estado del Proyecto
+En desarrollo (curso Full Stack Básico, Guía 15 de 24)
